@@ -24,10 +24,7 @@ public class Pulsate : MonoBehaviour {
 		
 
 		float t = Mathf.Cos( speed * Time.time ); 
-		
-		//We want the object to change between 0.5 and 1.5 times its original size,
-		//but the output of the the cosine function is between -1 and 1, so here
-		//we convert it.
+
 		t = convertRange(t, -1, 1, 0, 1);
 		
 		//We set the size of the object to be the correct fraction of its original size.
