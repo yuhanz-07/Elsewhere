@@ -1,60 +1,48 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health")]
-    [SerializeField] private float startingHealth = 3;
-    public float currentHealth { get; private set; }
-    private bool invulnerable = false;
+    [SerializeField] private int startingHealth = 3;
+    public float currentHealth;
 
-    [Header("Invulnerability")]
-    [SerializeField] private float iFramesDuration = 1f;
-    [SerializeField] private int numberOfFlashes = 4;
-    [SerializeField] private Renderer playerRenderer;
 
-    private void Awake()
+    [Header("Damage Cooldown")]
+    [SerializeField] private float damageCooldown = 3f;
+    private bool isInvincible = false;
+
+    private void Start()
     {
         currentHealth = startingHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damageAmount)
     {
-        if (invulnerable) return;
+        if (isInvincible) return;
 
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-        Debug.Log("Player took damage! Health: " + currentHealth);
+        currentHealth -= damageAmount;
+        Debug.Log("Player took damage. Remaining lives: " + currentHealth);
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Player Died!");
-            gameObject.SetActive(false); // Or trigger death logic
+            Die();
         }
         else
         {
-            StartCoroutine(Invulnerability());
+            StartCoroutine(InvincibilityPeriod());
         }
     }
 
-    private IEnumerator Invulnerability()
+    private IEnumerator InvincibilityPeriod()
     {
-        invulnerable = true;
-        Physics.IgnoreLayerCollision(9, 10, true); // Make sure Player is Layer 9, Enemy is Layer 10
+        isInvincible = true;
+        yield return new WaitForSeconds(damageCooldown);
+        isInvincible = false;
+    }
 
-        for (int i = 0; i < numberOfFlashes; i++)
-        {
-            if (playerRenderer != null)
-                playerRenderer.material.color = Color.red;
-
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
-
-            if (playerRenderer != null)
-                playerRenderer.material.color = Color.white;
-
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
-        }
-
-        Physics.IgnoreLayerCollision(9, 10, false);
-        invulnerable = false;
+    private void Die()
+    {
+        Debug.Log("Player died!");
     }
 }

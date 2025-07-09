@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private float movementDistance;
     [SerializeField] private float speed;
-    [SerializeField] private float damage = 1f;
+    [SerializeField] private int damage = 1;
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge;
