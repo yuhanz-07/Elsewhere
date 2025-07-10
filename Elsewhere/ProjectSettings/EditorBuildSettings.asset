@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Freya_GameOverMenu.unity
     guid: 115ee181752fdf247af5abaa625d3c3a
+  - enabled: 1
+    path: Assets/Scenes/Freya_WinMenu.unity
+    guid: 1ff60a60ca2a042d680e206bf3478902
   m_configObjects: {}

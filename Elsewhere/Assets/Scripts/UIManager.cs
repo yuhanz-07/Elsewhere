@@ -4,7 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-
+    [SerializeField] private int maxCrystals = 5;
     private int crystalCount = 0;
 
     [SerializeField] private TextMeshProUGUI crystalText;
@@ -24,6 +24,11 @@ public class UIManager : MonoBehaviour
     public void AddCrystal()
     {
         crystalCount++;
-        crystalText.text = crystalCount.ToString();
+        crystalText.text = crystalCount + "/" + maxCrystals;
+    }
+
+    public bool HasAllCrystals()
+    {
+        return crystalCount >= maxCrystals;
     }
 }
