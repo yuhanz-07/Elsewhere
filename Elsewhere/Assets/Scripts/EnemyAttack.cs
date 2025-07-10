@@ -40,14 +40,17 @@ public class EnemyAttack : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
+{
+    Debug.Log("Enemy trigger entered: " + other.name);
+
+    if (other.CompareTag("Player"))
     {
-        if (other.CompareTag("Player"))
+        PlayerHealth health = other.GetComponent<PlayerHealth>();
+        if (health != null)
         {
-            PlayerHealth health = other.GetComponent<PlayerHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
-            }
+            health.TakeDamage(damage);
         }
     }
+}
+
 }
