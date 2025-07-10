@@ -239,7 +239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06573432ad21245f2bea30286f2decfd, type: 2}
+  - {fileID: 2100000, guid: a3bb74875477b46a0aacfb7579d93238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -730,6 +730,15 @@ MonoBehaviour:
   startingHealth: 3
   currentHealth: 0
   damageCooldown: 3
+  playerRenderers:
+  - {fileID: 1636303437}
+  - {fileID: 1477213556}
+  - {fileID: 2102512365}
+  - {fileID: 1547745139}
+  - {fileID: 800244198}
+  - {fileID: 1539299554}
+  damageColor: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
+  flashDuration: 0.2
 --- !u!136 &570933842
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -954,6 +963,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageText: {fileID: 2137707085}
   displayTime: 3
+--- !u!23 &800244198 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1806680513116206669, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &880895558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1447,6 +1461,11 @@ MonoBehaviour:
   playerHealth: {fileID: 570933841}
   totalHealthBar: {fileID: 1742918490}
   currentHealthBar: {fileID: 2035341042}
+--- !u!23 &1477213556 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1500371864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1558,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 570933840}
   m_LocalEulerAnglesHint: {x: 13.899, y: 0, z: 0}
+--- !u!23 &1539299554 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6745302439343835087, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1547745139 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6093592463355912122, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1558861835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,6 +1625,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 181ebb30432ba40249eb57810cfa59b3, type: 3}
+--- !u!23 &1636303437 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730858799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2308,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035341040}
   m_CullTransparentMesh: 1
+--- !u!23 &2102512365 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -804731622281664130, guid: 3c953a864a04847d0a2d4a788e3394ea, type: 3}
+  m_PrefabInstance: {fileID: 506464797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137707083
 GameObject:
   m_ObjectHideFlags: 0
