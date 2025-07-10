@@ -10,6 +10,8 @@ public class Collection : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //collectionAudio.Play();
+            UIManager.Instance.AddCrystal();
+
             this.gameObject.SetActive(false);
             Instantiate(onCollectEffect, transform.position, transform.rotation);
         }
