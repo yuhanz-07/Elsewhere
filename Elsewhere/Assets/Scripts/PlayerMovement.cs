@@ -6,10 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5.0f;
     public float mouseSensitivity = 3.0f;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 8.0f;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundLayer;
+
+    [Header("Jump Tuning")]
+    public float fallMultiplier = 3.0f;
+    public float lowJumpMultiplier = 2.0f;
 
     [Header("Mouse Look")]
     public Transform cameraHolder;
@@ -19,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     private const int maxJumps = 2;
     private bool wasGrounded = false;
-
 
     private float xRotation = 0f;
     private Rigidbody rb;
@@ -50,10 +53,23 @@ public class PlayerMovement : MonoBehaviour
             jumpCount++;
         }
 
+        ApplyBetterJumpPhysics();
         LookAround();
     }
 
-
+    private void ApplyBetterJumpPhysics()
+    {
+        if (rb.velocity.y < 0)
+        {
+            // Falling
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // Rising but jump key released
+            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
 
     private void FixedUpdate()
     {
