@@ -10,6 +10,10 @@ public class DoorTrigger : MonoBehaviour
             if (UIManager.Instance != null && UIManager.Instance.HasAllCrystals())
             {
                 Debug.Log("All crystals collected. Loading next scene...");
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
                 SceneManager.LoadScene(3);
             }
             else
