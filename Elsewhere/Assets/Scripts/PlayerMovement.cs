@@ -48,11 +48,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Movement forward/back
         float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = transform.forward * moveVertical * speed * Time.fixedDeltaTime;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        Vector3 moveForward = transform.forward * moveVertical;
+        Vector3 moveRight = transform.right * moveHorizontal;
+
+        Vector3 movement = (moveForward + moveRight).normalized * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + movement);
     }
+
 
     private void LookAround()
     {
