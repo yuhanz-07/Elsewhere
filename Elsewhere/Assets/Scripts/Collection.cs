@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
-    //[SerializeField] AudioSource collectionAudio;
-    public GameObject onCollectEffect;
+    [SerializeField] private AudioClip collectionClip;
+    [SerializeField] private GameObject onCollectEffect;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //collectionAudio.Play();
+            AudioSource.PlayClipAtPoint(collectionClip, transform.position);
+
             UIManager.Instance.AddCrystal();
 
-            this.gameObject.SetActive(false);
             Instantiate(onCollectEffect, transform.position, transform.rotation);
+
+            Destroy(gameObject);
         }
     }
 }
