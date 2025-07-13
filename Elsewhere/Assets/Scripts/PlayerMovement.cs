@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
     }
 
+
     void Update()
     {
         // Handle Jump Input
