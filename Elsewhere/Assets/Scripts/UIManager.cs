@@ -4,7 +4,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] private int maxCrystals = 5;
+    [SerializeField] private int maxCrystals = 6;
     private int crystalCount = 0;
 
     [SerializeField] private TextMeshProUGUI crystalText;
