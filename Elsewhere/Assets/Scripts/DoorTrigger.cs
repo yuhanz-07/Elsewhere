@@ -18,7 +18,7 @@ public class DoorTrigger : MonoBehaviour
             }
             else
             {
-                MessageDisplay.Instance.ShowMessage("You need all 5 crystals to open the door!");
+                MessageDisplay.Instance.ShowMessage("You need all 6 crystals to open the door!");
             }
         }
     }

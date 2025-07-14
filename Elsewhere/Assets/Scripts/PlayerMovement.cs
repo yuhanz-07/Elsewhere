@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     private const int maxJumps = 2;
 
+    [Header("Air Control")]
+    public float airControlMultiplier = 0.4f;
+
+
     private float xRotation = 0f;
     private Rigidbody rb;
     private bool isGrounded = false;
@@ -65,22 +69,22 @@ public class PlayerMovement : MonoBehaviour
         Vector3 desiredVelocity;
 
         if (isGrounded)
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.2f))
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.2f))
-            {
-                Vector3 slopeNormal = hit.normal;
-                Vector3 slopeDirection = Vector3.ProjectOnPlane(moveInput, slopeNormal).normalized;
-                desiredVelocity = slopeDirection * speed;
-            }
-            else
-            {
-                desiredVelocity = moveInput * speed;
-            }
+            Vector3 slopeNormal = hit.normal;
+            Vector3 slopeDirection = Vector3.ProjectOnPlane(moveInput, slopeNormal).normalized;
+            desiredVelocity = slopeDirection * speed;
         }
         else
         {
-            desiredVelocity = moveInput * speed * 0.5f;
+            desiredVelocity = moveInput * speed;
         }
+    }
+    else
+    {
+        desiredVelocity = moveInput * speed * airControlMultiplier;
+    }
 
         rb.velocity = new Vector3(desiredVelocity.x, rb.velocity.y, desiredVelocity.z);
     }
