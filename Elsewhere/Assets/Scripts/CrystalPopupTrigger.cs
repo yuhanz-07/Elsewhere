@@ -20,10 +20,17 @@ public class CrystalWithPopup : MonoBehaviour
         {
             popupText.transform.position = transform.position + Vector3.up * 2f;
 
-            Vector3 direction = popupText.transform.position - cameraTransform.position;
-            popupText.transform.rotation = Quaternion.LookRotation(direction);
+            Vector3 flatDirection = cameraTransform.position - popupText.transform.position;
+            flatDirection.y = 0;
+
+            if (flatDirection.sqrMagnitude > 0.001f)
+            {
+                Quaternion rotation = Quaternion.LookRotation(-flatDirection);
+                popupText.transform.rotation = rotation;
+            }
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
