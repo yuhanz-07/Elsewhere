@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CrystalCollectionTrigger : MonoBehaviour
 {
-    public GameObject crystalRoot; // The main crystal object
+    public GameObject crystalRoot;
 
     public GameObject onCollectEffect;
 
