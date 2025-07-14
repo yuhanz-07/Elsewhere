@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Handle Jump Input
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumps)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -52,12 +51,41 @@ public class PlayerMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        Vector3 moveForward = transform.forward * moveVertical;
-        Vector3 moveRight = transform.right * moveHorizontal;
+        Vector3 forward = cameraHolder.forward;
+        Vector3 right = cameraHolder.right;
 
-        Vector3 movement = (moveForward + moveRight).normalized * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + movement);
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 moveInput = (forward * moveVertical + right * moveHorizontal).normalized;
+
+        Vector3 desiredVelocity;
+
+        if (isGrounded)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.2f))
+            {
+                Vector3 slopeNormal = hit.normal;
+                Vector3 slopeDirection = Vector3.ProjectOnPlane(moveInput, slopeNormal).normalized;
+                desiredVelocity = slopeDirection * speed;
+            }
+            else
+            {
+                desiredVelocity = moveInput * speed;
+            }
+        }
+        else
+        {
+            desiredVelocity = moveInput * speed * 0.5f;
+        }
+
+        rb.velocity = new Vector3(desiredVelocity.x, rb.velocity.y, desiredVelocity.z);
     }
+
+
 
 
     private void LookAround()
@@ -83,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
-        // Grounded state debug
         if (isGrounded && !wasGrounded)
         {
             Debug.Log("Landed on ground.");
