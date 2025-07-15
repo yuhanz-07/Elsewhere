@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float maxLookAngle = 60f;
 
     [Header("Jump Settings")]
-    public float jumpForce = 8.0f;
-    public float fallMultiplier = 3.0f;
-    public float lowJumpMultiplier = 2.0f;
+    public float jumpForce = 6.0f;
+    public float fallMultiplier = 5.0f;
+    public float lowJumpMultiplier = 3.0f;
     private int jumpCount = 0;
     private const int maxJumps = 2;
 
