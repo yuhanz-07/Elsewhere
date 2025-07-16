@@ -122,6 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &11030430
 GameObject:
   m_ObjectHideFlags: 0
@@ -15701,21 +15702,9 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+=======
+>>>>>>> 89ae21ec5f4231b4217fd6aa94428e1a6a4fb23c
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
-  m_Roots:
-  - {fileID: 1873223441}
-  - {fileID: 506464797}
-  - {fileID: 1886857871}
-  - {fileID: 1610468163}
-  - {fileID: 1096417725}
-  - {fileID: 754473783}
-  - {fileID: 1952693636}
-  - {fileID: 1730858802}
-  - {fileID: 1194481843}
-  - {fileID: 166543534}
-  - {fileID: 72502231}
-  - {fileID: 488577430}
-  - {fileID: 1430637104}
-  - {fileID: 1330584106}
+  m_Roots: []
