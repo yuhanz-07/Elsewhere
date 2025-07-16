@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Freya_MainMenu.unity
     guid: bc1ae9a90246d5c46914c60ba26e1cf5
   - enabled: 1
-    path: Assets/Scenes/Freya_Level1.unity
-    guid: 147a6d19820ea4b338305a48e0d20159
+    path: Assets/Scenes/Freya_Level.unity
+    guid: f73dfb23f15dd495fbb67f4a17eba3cb
   - enabled: 1
     path: Assets/Scenes/Freya_GameOverMenu.unity
     guid: 115ee181752fdf247af5abaa625d3c3a
